@@ -1,6 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var mkdirpPromise = require('mkdirp-promise');
+var escapeStringRegexp = require('escape-string-regexp');
 
 var injectFlagMap = {
 	html: {
@@ -120,6 +121,8 @@ HtmlInjectPlugin.prototype.inject = function (options, htmlPluginData) {
   var tags = injectFlagMap[ext];
 
   function inject(html, name, tpls) {
+  	name = escapeStringRegexp(name);
+  	
 		var reStr = tags.starttag(name) + '(.*\n*.*)' + tags.endtag;
 		var re = new RegExp(reStr, 'ig');
 		var newHtml = html.replace(re, function () {
