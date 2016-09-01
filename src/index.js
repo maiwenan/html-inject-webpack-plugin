@@ -2,16 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var mkdirpPromise = require('mkdirp-promise');
 var escapeStringRegexp = require('escape-string-regexp');
-
-var injectFlagMap = {
-	html: {
-		starttag: function (name) {
-			name = name || 'html';
-			return '<!-- inject:' + name + ' -->';
-		},
-		endtag: '<!-- endinject -->'
-	}
-};
+var injectFlagMap = require('./flags.js');
 
 
 function HtmlInjectPlugin(options) {
