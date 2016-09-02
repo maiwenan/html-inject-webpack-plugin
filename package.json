@@ -16,6 +16,10 @@
     "webpack",
     "inject"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maiwenan/html-inject-webpack-plugin.git"
+  },
   "author": "haw",
   "license": "ISC",
   "devDependencies": {
