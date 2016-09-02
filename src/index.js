@@ -2,8 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var mkdirpPromise = require('mkdirp-promise');
 var escapeStringRegexp = require('escape-string-regexp');
-var injectFlagMap = require('./flags.js');
-
+var getInjectFlag = require('./flags.js');
 
 function HtmlInjectPlugin(options) {
 	this.options = options || {};
@@ -109,7 +108,7 @@ HtmlInjectPlugin.prototype.inject = function (options, htmlPluginData) {
 	var html = htmlPluginData.html;
 	var config = htmlPluginData.plugin.options;
   var ext = config.filename.split('.')[1];
-  var tags = injectFlagMap[ext];
+  var tags = getInjectFlag(ext);
 
   function inject(html, name, tpls) {
   	name = escapeStringRegexp(name);

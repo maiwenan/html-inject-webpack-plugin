@@ -8,6 +8,6 @@ var injectFlagMap = {
 	}
 };
 
-injectFlagMap['jsp'] = injectFlagMap['vm'] = injectFlagMap.html;
-
-module.exports = injectFlagMap;
+module.exports = function (ext)  {
+	return injectFlagMap[ext] || injectFlagMap.html;
+};
